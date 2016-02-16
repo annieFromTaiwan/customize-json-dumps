@@ -12,6 +12,8 @@ These tests are originated from http://stackoverflow.com/questions/13249415/
 
 只有 json.dumps 不認識的 class object 才會被丟到自定義的 `cls` 或 `default` function
 
+// 雖然官網說明中敘述是長這樣：`To use a custom JSONEncoder subclass (e.g. one that overrides the default() method to serialize additional types), specify it with the cls kwarg; otherwise JSONEncoder is used.` 但其實不是所有的物件都會被丟進自定義的 Encoder。  (from https://docs.python.org/2/library/json.html#basic-usage)
+
 認不認識可參考：https://docs.python.org/2/library/json.html#encoders-and-decoders
 
 在 `test3()` 作法裡，`default` 處理不了的就丟給 super 的意義在於，要是有其他種奇怪的物件，我們自定義的 Encoder 處理不了的，應該要交給上層去 raise exception。
